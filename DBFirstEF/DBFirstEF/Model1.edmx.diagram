@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7220a9f3992e4855b3bf4f83f2965408" Name="Diagram1">
+        <EntityTypeShape EntityType="WarehouseModel.ActionsDictionary" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Activity" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.AuditLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.CategoryDictionary" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.GiversDictionary" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.NetoDictionary" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.ProductDictionariy" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.ProductPlace" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Product" Width="1.5" PointX="10.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Role" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.StatusDictionary" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.User" Width="1.5" PointX="8.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WarehouseModel.Warehouse" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="WarehouseModel.FK_ActionsDictionary_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Activities_ActionsDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Activities_GiversDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Activities_ProductDictionariy" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Activities_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Activities_Warehouses" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_CategoryDictionary_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_ProductDictionariy_CategoryDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_GiversDictionary_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_NetoDictionary_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_ProductDictionariy_NetoDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_ProductDictionariy_ProductPlaces" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_ProductDictionariy_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Products_ProductDictionariy" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_ProductPlaces_Warehouses" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Products_Warehouses" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Roles_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Warehouses_StatusDictionary" ManuallyRouted="false" />
+        <AssociationConnector Association="WarehouseModel.FK_Users_Warehouses" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

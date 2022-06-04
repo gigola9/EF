@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WarehouseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ActionsDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Action" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_ActionsDictionary_StatusDictionary" FromRole="ActionsDictionary" ToRole="StatusDictionary" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_ActionsDictionary" FromRole="ActionsDictionary" ToRole="Activities" />
+  </EntityType>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="GiverId" Type="Int32" Nullable="false" />
+    <Property Name="ActionId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <NavigationProperty Name="ActionsDictionary" Relationship="Self.FK_Activities_ActionsDictionary" FromRole="Activities" ToRole="ActionsDictionary" />
+    <NavigationProperty Name="GiversDictionary" Relationship="Self.FK_Activities_GiversDictionary" FromRole="Activities" ToRole="GiversDictionary" />
+    <NavigationProperty Name="ProductDictionariy" Relationship="Self.FK_Activities_ProductDictionariy" FromRole="Activities" ToRole="ProductDictionariy" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Activities_Users" FromRole="Activities" ToRole="Users" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Activities_Warehouses" FromRole="Activities" ToRole="Warehouses" />
+  </EntityType>
+  <EntityType Name="AuditLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuditLog1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_CategoryDictionary_StatusDictionary" FromRole="CategoryDictionary" ToRole="StatusDictionary" />
+    <NavigationProperty Name="ProductDictionariys" Relationship="Self.FK_ProductDictionariy_CategoryDictionary" FromRole="CategoryDictionary" ToRole="ProductDictionariy" />
+  </EntityType>
+  <EntityType Name="GiversDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_GiversDictionary" FromRole="GiversDictionary" ToRole="Activities" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_GiversDictionary_StatusDictionary" FromRole="GiversDictionary" ToRole="StatusDictionary" />
+  </EntityType>
+  <EntityType Name="NetoDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Neto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_NetoDictionary_StatusDictionary" FromRole="NetoDictionary" ToRole="StatusDictionary" />
+    <NavigationProperty Name="ProductDictionariys" Relationship="Self.FK_ProductDictionariy_NetoDictionary" FromRole="NetoDictionary" ToRole="ProductDictionariy" />
+  </EntityType>
+  <EntityType Name="ProductDictionariy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="NetoId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="PlaceId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_ProductDictionariy" FromRole="ProductDictionariy" ToRole="Activities" />
+    <NavigationProperty Name="CategoryDictionary" Relationship="Self.FK_ProductDictionariy_CategoryDictionary" FromRole="ProductDictionariy" ToRole="CategoryDictionary" />
+    <NavigationProperty Name="NetoDictionary" Relationship="Self.FK_ProductDictionariy_NetoDictionary" FromRole="ProductDictionariy" ToRole="NetoDictionary" />
+    <NavigationProperty Name="ProductPlace" Relationship="Self.FK_ProductDictionariy_ProductPlaces" FromRole="ProductDictionariy" ToRole="ProductPlaces" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_ProductDictionariy_StatusDictionary" FromRole="ProductDictionariy" ToRole="StatusDictionary" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_ProductDictionariy" FromRole="ProductDictionariy" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="ProductPlace">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProductDictionariys" Relationship="Self.FK_ProductDictionariy_ProductPlaces" FromRole="ProductPlaces" ToRole="ProductDictionariy" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_ProductPlaces_Warehouses" FromRole="ProductPlaces" ToRole="Warehouses" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProductDictionariy" Relationship="Self.FK_Products_ProductDictionariy" FromRole="Products" ToRole="ProductDictionariy" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Products_Warehouses" FromRole="Products" ToRole="Warehouses" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_Roles_StatusDictionary" FromRole="Roles" ToRole="StatusDictionary" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="StatusDictionary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ActionsDictionaries" Relationship="Self.FK_ActionsDictionary_StatusDictionary" FromRole="StatusDictionary" ToRole="ActionsDictionary" />
+    <NavigationProperty Name="CategoryDictionaries" Relationship="Self.FK_CategoryDictionary_StatusDictionary" FromRole="StatusDictionary" ToRole="CategoryDictionary" />
+    <NavigationProperty Name="GiversDictionaries" Relationship="Self.FK_GiversDictionary_StatusDictionary" FromRole="StatusDictionary" ToRole="GiversDictionary" />
+    <NavigationProperty Name="NetoDictionaries" Relationship="Self.FK_NetoDictionary_StatusDictionary" FromRole="StatusDictionary" ToRole="NetoDictionary" />
+    <NavigationProperty Name="ProductDictionariys" Relationship="Self.FK_ProductDictionariy_StatusDictionary" FromRole="StatusDictionary" ToRole="ProductDictionariy" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Roles_StatusDictionary" FromRole="StatusDictionary" ToRole="Roles" />
+    <NavigationProperty Name="Warehouses" Relationship="Self.FK_Warehouses_StatusDictionary" FromRole="StatusDictionary" ToRole="Warehouses" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nickname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="WarehouseId" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_Users" FromRole="Users" ToRole="Activities" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="Warehouse" Relationship="Self.FK_Users_Warehouses" FromRole="Users" ToRole="Warehouses" />
+  </EntityType>
+  <EntityType Name="Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_Warehouses" FromRole="Warehouses" ToRole="Activities" />
+    <NavigationProperty Name="ProductPlaces" Relationship="Self.FK_ProductPlaces_Warehouses" FromRole="Warehouses" ToRole="ProductPlaces" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Warehouses" FromRole="Warehouses" ToRole="Products" />
+    <NavigationProperty Name="StatusDictionary" Relationship="Self.FK_Warehouses_StatusDictionary" FromRole="Warehouses" ToRole="StatusDictionary" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Warehouses" FromRole="Warehouses" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_ActionsDictionary_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="ActionsDictionary" Type="Self.ActionsDictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActionsDictionary">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activities_ActionsDictionary">
+    <End Role="ActionsDictionary" Type="Self.ActionsDictionary" Multiplicity="1" />
+    <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ActionsDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activities">
+        <PropertyRef Name="ActionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activities_GiversDictionary">
+    <End Role="GiversDictionary" Type="Self.GiversDictionary" Multiplicity="1" />
+    <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiversDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activities">
+        <PropertyRef Name="GiverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activities_ProductDictionariy">
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="1" />
+    <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDictionariy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activities">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activities_Users">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activities">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Activities_Warehouses">
+    <End Role="Warehouses" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Activities">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryDictionary_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="CategoryDictionary" Type="Self.CategoryDictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryDictionary">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDictionariy_CategoryDictionary">
+    <End Role="CategoryDictionary" Type="Self.CategoryDictionary" Multiplicity="1" />
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDictionariy">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiversDictionary_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="GiversDictionary" Type="Self.GiversDictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GiversDictionary">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NetoDictionary_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="NetoDictionary" Type="Self.NetoDictionary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NetoDictionary">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDictionariy_NetoDictionary">
+    <End Role="NetoDictionary" Type="Self.NetoDictionary" Multiplicity="1" />
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NetoDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDictionariy">
+        <PropertyRef Name="NetoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDictionariy_ProductPlaces">
+    <End Role="ProductPlaces" Type="Self.ProductPlace" Multiplicity="1" />
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductPlaces">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDictionariy">
+        <PropertyRef Name="PlaceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductDictionariy_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductDictionariy">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_ProductDictionariy">
+    <End Role="ProductDictionariy" Type="Self.ProductDictionariy" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductDictionariy">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductPlaces_Warehouses">
+    <End Role="Warehouses" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="ProductPlaces" Type="Self.ProductPlace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductPlaces">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Warehouses">
+    <End Role="Warehouses" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Products" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="Roles" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouses_StatusDictionary">
+    <End Role="StatusDictionary" Type="Self.StatusDictionary" Multiplicity="1" />
+    <End Role="Warehouses" Type="Self.Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusDictionary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouses">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Warehouses">
+    <End Role="Warehouses" Type="Self.Warehouse" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouses">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WarehouseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ActionsDictionaries" EntityType="Self.ActionsDictionary" />
+    <EntitySet Name="Activities" EntityType="Self.Activity" />
+    <EntitySet Name="AuditLogs" EntityType="Self.AuditLog" />
+    <EntitySet Name="CategoryDictionaries" EntityType="Self.CategoryDictionary" />
+    <EntitySet Name="GiversDictionaries" EntityType="Self.GiversDictionary" />
+    <EntitySet Name="NetoDictionaries" EntityType="Self.NetoDictionary" />
+    <EntitySet Name="ProductDictionariys" EntityType="Self.ProductDictionariy" />
+    <EntitySet Name="ProductPlaces" EntityType="Self.ProductPlace" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="StatusDictionaries" EntityType="Self.StatusDictionary" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Warehouses" EntityType="Self.Warehouse" />
+    <AssociationSet Name="FK_ActionsDictionary_StatusDictionary" Association="Self.FK_ActionsDictionary_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="ActionsDictionary" EntitySet="ActionsDictionaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activities_ActionsDictionary" Association="Self.FK_Activities_ActionsDictionary">
+      <End Role="ActionsDictionary" EntitySet="ActionsDictionaries" />
+      <End Role="Activities" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activities_GiversDictionary" Association="Self.FK_Activities_GiversDictionary">
+      <End Role="GiversDictionary" EntitySet="GiversDictionaries" />
+      <End Role="Activities" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activities_ProductDictionariy" Association="Self.FK_Activities_ProductDictionariy">
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+      <End Role="Activities" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activities_Users" Association="Self.FK_Activities_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Activities" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Activities_Warehouses" Association="Self.FK_Activities_Warehouses">
+      <End Role="Warehouses" EntitySet="Warehouses" />
+      <End Role="Activities" EntitySet="Activities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryDictionary_StatusDictionary" Association="Self.FK_CategoryDictionary_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="CategoryDictionary" EntitySet="CategoryDictionaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDictionariy_CategoryDictionary" Association="Self.FK_ProductDictionariy_CategoryDictionary">
+      <End Role="CategoryDictionary" EntitySet="CategoryDictionaries" />
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiversDictionary_StatusDictionary" Association="Self.FK_GiversDictionary_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="GiversDictionary" EntitySet="GiversDictionaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NetoDictionary_StatusDictionary" Association="Self.FK_NetoDictionary_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="NetoDictionary" EntitySet="NetoDictionaries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDictionariy_NetoDictionary" Association="Self.FK_ProductDictionariy_NetoDictionary">
+      <End Role="NetoDictionary" EntitySet="NetoDictionaries" />
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDictionariy_ProductPlaces" Association="Self.FK_ProductDictionariy_ProductPlaces">
+      <End Role="ProductPlaces" EntitySet="ProductPlaces" />
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductDictionariy_StatusDictionary" Association="Self.FK_ProductDictionariy_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_ProductDictionariy" Association="Self.FK_Products_ProductDictionariy">
+      <End Role="ProductDictionariy" EntitySet="ProductDictionariys" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductPlaces_Warehouses" Association="Self.FK_ProductPlaces_Warehouses">
+      <End Role="Warehouses" EntitySet="Warehouses" />
+      <End Role="ProductPlaces" EntitySet="ProductPlaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Warehouses" Association="Self.FK_Products_Warehouses">
+      <End Role="Warehouses" EntitySet="Warehouses" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_StatusDictionary" Association="Self.FK_Roles_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouses_StatusDictionary" Association="Self.FK_Warehouses_StatusDictionary">
+      <End Role="StatusDictionary" EntitySet="StatusDictionaries" />
+      <End Role="Warehouses" EntitySet="Warehouses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Warehouses" Association="Self.FK_Users_Warehouses">
+      <End Role="Warehouses" EntitySet="Warehouses" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

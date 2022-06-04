@@ -1,0 +1,17 @@
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\DBFirstEF.exe.config
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\DBFirstEF.exe
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\DBFirstEF.pdb
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\EntityFramework.dll
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\EntityFramework.xml
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.csproj.AssemblyReference.cache
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.csproj.SuggestedBindingRedirects.cache
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.Form1.resources
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.Properties.Resources.resources
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.csproj.GenerateResource.cache
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.csproj.CoreCompileInputs.cache
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.csproj.CopyComplete
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.exe
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.pdb
+C:\Users\admGiasanidze\source\repos\DBFirstEF\DBFirstEF\obj\Debug\DBFirstEF.Form2.resources
